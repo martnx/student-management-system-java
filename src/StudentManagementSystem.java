@@ -78,7 +78,7 @@ public class StudentManagementSystem {
 			}
 		}
 		if(!studentFound) {
-			System.out.println("Student ID didn't existed");			
+			System.out.println("Student ID does not exist.");			
 		}
 	}
 	
