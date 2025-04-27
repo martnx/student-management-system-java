@@ -45,8 +45,11 @@ public class ConsoleView {
     	
     	System.out.print("Enter Student Course: ");
     	String studentCourse = scan.nextLine();
+    	
+    	System.out.print("Enter Student GWA: ");
+    	double gwa = scan.nextDouble();
     
-    	student = new Student(cap, studentAge, studentCourse, sms.giveID());
+    	student = new Student(cap, studentAge, studentCourse, gwa, sms.giveID());
     	sms.addStudent(student);
     } 
 
