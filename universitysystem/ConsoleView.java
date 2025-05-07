@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class ConsoleView {
+	
+	UniversitySystem system = new UniversitySystem();
+	
 	StudentManagementSystem sms = new StudentManagementSystem();
 	Student student;
 	Scanner scan = new Scanner(System.in);
@@ -48,25 +51,59 @@ public class ConsoleView {
     	
     	System.out.print("Enter Student GWA: ");
     	double gwa = scan.nextDouble();
-    
-    	student = new Student(cap, studentAge, studentCourse, gwa, sms.giveID());
-    	sms.addStudent(student);
+    	
+    	system.addStudent(cap, studentAge, system.giveId(), studentCourse, gwa);
     } 
 
-    void viewAllStudents() {
-        sms.viewAllStudents();
+    void addProfessor() {
+    	String profName;
+    	System.out.print("Enter Professor Name: ");
+    	profName = scan.nextLine();
+    	String cap;
+    	if(!profName.isEmpty()) {
+        	cap = capitalize(profName);
+    	}
+    	else {
+    		System.out.println("\nYou can't input blank name!");
+    		return;
+    	}
+
+    	System.out.print("Enter Professor Age: ");
+    	int profAge = scan.nextInt();
+    	scan.nextLine();
+    	
+    	System.out.print("Enter Professor Department: ");
+    	String profDepartment = scan.nextLine();
+    	
+    	system.addProfessor(cap, profAge, system.giveId(), profDepartment);
+    	
     }
     
+    void viewAllPeople() {
+    	system.viewAllPeople();
+    }
+    
+    void viewAllStudents() {
+        system.viewAllStudents();
+    }
+    
+    void viewAllProfessors() {
+    	system.viewAllProfessors();
+    }
+    
+    void viewAllHonorStudents() {
+    	sms.viewAllHonorStudents();
+    }
     void searchById() {
         System.out.print("Enter the Student ID: ");
         int searchId = scan.nextInt();
         sms.searchById(searchId);
     }
 
-    void removeStudent() {
-        System.out.print("Enter Student ID to Remove:  ");
+    void removeById() {
+        System.out.print("Enter ID to Remove:  ");
         int id = scan.nextInt();
-        sms.removeStudent(id);
+        system.removeById(id);
     }
     
 	public ConsoleView(){
@@ -75,16 +112,19 @@ public class ConsoleView {
 		while(!exit) {
             System.out.println("\n===== Student Management System =====");
             System.out.println("[1] Add Student");
-            System.out.println("[2] View All Students");
-            System.out.println("[3] Search by ID");
-            System.out.println("[4] Remove Student");
-            System.out.println("[5] Exit");
+            System.out.println("[2] Add Professor");
+            System.out.println("[3] View All People");
+            System.out.println("[4] View Students");
+            System.out.println("[5] View Professors");
+            System.out.println("[6] Search by ID");
+            System.out.println("[7] Remove Person");
+            System.out.println("[8] Exit");
             System.out.print("Enter your choice: ");
             if (scan.hasNextInt()) {
                 choice = scan.nextInt();
                 scan.nextLine(); // <-- This clears the leftover newline
             } else {
-                System.out.println("Invalid input. Please enter a number from 1 to 5.");
+                System.out.println("Invalid input. Please enter a number from 1 to 6.");
                 scan.nextLine(); // Clear the invalid input
                 continue;
             }
@@ -93,15 +133,24 @@ public class ConsoleView {
 					addStudent();
  					break;
 				case 2:
-					viewAllStudents();
+					addProfessor();
 					break;
 				case 3:
-					searchById();
+					viewAllPeople();
 					break;
 				case 4:
-					removeStudent();
+					viewAllStudents();
 					break;
-				case 5: 
+				case 5:
+					viewAllProfessors();
+					break;
+				case 6:
+					searchById();
+					break;
+				case 7:
+					removeById();
+					break;
+				case 8: 
 					exit = true;
 					break;
 				default: System.out.println("ERROR!: Enter valid input!");
@@ -110,3 +159,4 @@ public class ConsoleView {
 		scan.close();
 	}
 }
+ 
