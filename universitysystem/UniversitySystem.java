@@ -1,40 +1,44 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class UniversitySystem {
 
-	ArrayList<Person> people;
+	//Professor, Student, HonorStudent is holding this arrayList
+	List<Person> people;
+
 	Professor professor;
 	HonorStudent honorStudent;
 	Student student;
+	Course course;
 	
 	UniversitySystem(){
 		people = new ArrayList<>();
 		//Students
-		addStudent("Abra Kabadra", 20, giveId(), "BS-Medical Technology", 1.25);
-		addStudent("Martin Legaspi", 23, giveId(), "BS-Business Administration", 1.50);
-		addStudent("John Doe", 22, giveId(),"BS-Information Technology", 2.75);
-		addStudent("Juan DelaCruz", 23, giveId(), "BS-Social Science", 1.69 );
-		addStudent("Anna Mendoza", 21, giveId(), "BS-Computer Science", 1.75);
-		addStudent("Bryan Reyes", 22, giveId(), "BS-Mechanical Engineering", 2.10);
-		addStudent("Carla Santos", 20, giveId(), "BS-Psychology", 1.95);
-		addStudent("Daniel Cruz", 23, giveId(), "BS-Nursing", 1.49);
-		addStudent("Ella Ramirez", 19, giveId(), "BS-Information Technology", 2.25);
-		addStudent("Francis Lopez", 24, giveId(), "BS-Civil Engineering", 2.50);
-		addStudent("Grace Villanueva", 22, giveId(), "BS-Accountancy", 1.30);
-		addStudent("Henry Bautista", 21, giveId(), "BS-Hotel and Restaurant Management", 2.80);
-		addStudent("Isabelle Tan", 20, giveId(), "BS-Architecture", 1.85);
-		addStudent("Jacob Perez", 23, giveId(), "BS-Business Administration", 2.00);
-		addStudent("Kyla Lim", 21, giveId(), "BS-Political Science", 1.60);
-		addStudent("Leo Gomez", 22, giveId(), "BS-Electrical Engineering", 2.35);
-		addStudent("Mia Fernandez", 19, giveId(), "BS-Medical Technology", 1.20);
-		addStudent("Nathaniel David", 23, giveId(), "BS-Pharmacy", 1.70);
-		addStudent("Olivia Salazar", 20, giveId(), "BS-Entrepreneurship", 2.45);
-		addStudent("Paolo Gutierrez", 22, giveId(), "BS-Industrial Engineering", 2.10);
-		addStudent("Queenie Navarro", 21, giveId(), "BS-Physical Therapy", 1.40);
-		addStudent("Rafael Torres", 24, giveId(), "BS-Aeronautical Engineering", 2.60);
-		addStudent("Samantha Dizon", 20, giveId(), "BS-Environmental Science", 1.90);
-		addStudent("Thomas Castillo", 23, giveId(), "BS-Chemistry", 2.15);
-		
+		addStudent("Abra Kabadra Honor Student", 20, giveId(), "BS-Medical Technology", 5, "Dr. Enriquez", 1.25);
+		addStudent("Martin Legaspi", 23, giveId(), "BS-Business Administration", 3, "Prof. Ramos", 1.50);
+		addStudent("John Doe", 22, giveId(), "BS-Information Technology", 4, "Engr. Dela Cruz", 2.75);
+		addStudent("Juan DelaCruz", 23, giveId(), "BS-Social Science", 3, "Dr. Santos", 1.69);
+		addStudent("Anna Mendoza", 21, giveId(), "BS-Computer Science", 4, "Prof. Alcaraz", 1.75);
+		addStudent("Bryan Reyes", 22, giveId(), "BS-Mechanical Engineering", 5, "Engr. Navarro", 2.10);
+		addStudent("Carla Santos", 20, giveId(), "BS-Psychology", 3, "Dr. Javier", 1.95);
+		addStudent("Daniel Cruz", 23, giveId(), "BS-Nursing", 4, "Dr. Marquez", 1.49);
+		addStudent("Ella Ramirez", 19, giveId(), "BS-Information Technology", 4, "Engr. Dela Cruz", 2.25);
+		addStudent("Francis Lopez", 24, giveId(), "BS-Civil Engineering", 5, "Engr. Aguilar", 2.50);
+		addStudent("Grace Villanueva", 22, giveId(), "BS-Accountancy", 3, "Prof. Tolentino", 1.30);
+		addStudent("Henry Bautista", 21, giveId(), "BS-Hotel and Restaurant Management", 3, "Chef Rivera", 2.80);
+		addStudent("Isabelle Tan", 20, giveId(), "BS-Architecture", 5, "Arch. Herrera", 1.85);
+		addStudent("Jacob Perez", 23, giveId(), "BS-Business Administration", 3, "Prof. Ramos", 2.00);
+		addStudent("Kyla Lim", 21, giveId(), "BS-Political Science", 3, "Dr. Mendoza", 1.60);
+		addStudent("Leo Gomez", 22, giveId(), "BS-Electrical Engineering", 5, "Engr. Santos", 2.35);
+		addStudent("Mia Fernandez", 19, giveId(), "BS-Medical Technology", 5, "Dr. Enriquez", 1.20);
+		addStudent("Nathaniel David", 23, giveId(), "BS-Pharmacy", 4, "Dr. Cruz", 1.70);
+		addStudent("Olivia Salazar", 20, giveId(), "BS-Entrepreneurship", 3, "Prof. Jimenez", 2.45);
+		addStudent("Paolo Gutierrez", 22, giveId(), "BS-Industrial Engineering", 5, "Engr. Soriano", 2.10);
+		addStudent("Queenie Navarro", 21, giveId(), "BS-Physical Therapy", 4, "Dr. Villanueva", 1.40);
+		addStudent("Rafael Torres", 24, giveId(), "BS-Aeronautical Engineering", 5, "Engr. Vega", 2.60);
+		addStudent("Samantha Dizon", 20, giveId(), "BS-Environmental Science", 4, "Dr. Evangelista", 1.90);
+		addStudent("Thomas Castillo", 23, giveId(), "BS-Chemistry", 4, "Dr. Fajardo", 2.15);
+
 		//Professor
 		addProfessor("Maria Santos", 45, giveId(), "Computer Science");
 		addProfessor("Juan Dela Cruz", 50, giveId(), "Mathematics");
@@ -56,20 +60,19 @@ public class UniversitySystem {
 		addProfessor("Oscar Herrera", 53, giveId(), "Biology");
 		addProfessor("Isabel Aquino", 44, giveId(), "Philosophy");
 		addProfessor("Julius Chavez", 49, giveId(), "Law");
-
+		
 	}
 	
-	public void addStudent(String name, int age, int id, String course, double gwa) {
+	public void addStudent(String name, int age, int id, String courseName, int units, String instructor, double gwa) {
 		if((gwa >= 1.00 && gwa <= 1.25) || (gwa >= 1.26 && gwa <= 1.50) || (gwa >= 1.51 && gwa <= 1.75)) {
-			honorStudent = new HonorStudent(name, age, giveId(), course, gwa);
+			honorStudent = new HonorStudent(name, age, giveId(), courseName, units, instructor, gwa);
 			people.add(honorStudent);
 		}
 		else {
-			student = new Student(name, age, giveId(), course, gwa);
+			student = new Student(name, age, giveId(), courseName, units, instructor, gwa);
 			people.add(student);
 		}
-		System.out.println("Student: " + name + " added successfully!");
-		
+		System.out.println("Student: " + name + " added successfully!" +"Student Array size = ");
 	}
 	
 	public void addProfessor(String name, int age, int id, String department) {
@@ -97,7 +100,9 @@ public class UniversitySystem {
 				count++;
 			}
 		}
+				
 		System.out.println("Total of " + count +" students is enrolled.");
+		
 	}
 	
 	public void viewAllProfessors() {
@@ -156,4 +161,9 @@ public class UniversitySystem {
 	public int giveId() {
 		return people.size()+1;
 	}
+	
+	public List<Person> getList(){
+		return people;
+	}
+	
 }

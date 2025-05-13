@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleView {
 	
 	UniversitySystem system = new UniversitySystem();
+
+	
 	
 	StudentManagementSystem sms = new StudentManagementSystem();
 	Student student;
@@ -49,10 +53,17 @@ public class ConsoleView {
     	System.out.print("Enter Student Course: ");
     	String studentCourse = scan.nextLine();
     	
+    	System.out.print("Enter Student Units: ");
+    	int studentUnits = scan.nextInt();
+    	
+      	scan.nextLine();
+    	System.out.print("Enter Student Instructor: ");
+    	String studentInstructor = scan.nextLine();
+    	
     	System.out.print("Enter Student GWA: ");
     	double gwa = scan.nextDouble();
     	
-    	system.addStudent(cap, studentAge, system.giveId(), studentCourse, gwa);
+    	system.addStudent(cap, studentAge, system.giveId(), studentCourse, studentUnits, studentInstructor, gwa);
     } 
 
     void addProfessor() {
@@ -105,20 +116,26 @@ public class ConsoleView {
         int id = scan.nextInt();
         system.removeById(id);
     }
+
+    void honorRollManager() {
+    	HonorRollManager hrm = new HonorRollManager();
+    	hrm.displayHonorRoll();
+    }
     
 	public ConsoleView(){
 		boolean exit = false;
 		int choice;
 		while(!exit) {
-            System.out.println("\n===== Student Management System =====");
+            System.out.println("\n===== University Management System =====");
             System.out.println("[1] Add Student");
             System.out.println("[2] Add Professor");
             System.out.println("[3] View All People");
             System.out.println("[4] View Students");
             System.out.println("[5] View Professors");
             System.out.println("[6] Search by ID");
-            System.out.println("[7] Remove Person");
-            System.out.println("[8] Exit");
+            System.out.println("[7] View Roll Honor");
+            System.out.println("[8] Remove Person");
+            System.out.println("[9] Exit");
             System.out.print("Enter your choice: ");
             if (scan.hasNextInt()) {
                 choice = scan.nextInt();
@@ -148,9 +165,12 @@ public class ConsoleView {
 					searchById();
 					break;
 				case 7:
-					removeById();
+					honorRollManager();					
 					break;
 				case 8: 
+					removeById();
+					break;
+				case 9:
 					exit = true;
 					break;
 				default: System.out.println("ERROR!: Enter valid input!");

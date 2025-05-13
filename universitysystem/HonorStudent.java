@@ -1,8 +1,8 @@
 
 public class HonorStudent extends Student implements Enrollable{
 	
-	HonorStudent(String name, int age, int id, String course, double gwa) {
-		super(name, age, id, course, gwa);
+	HonorStudent(String name, int age, int id, String courseName, int units, String instructor, double gwa) {
+		super(name, age, id, courseName, units, instructor, gwa);
 		
 	}
 
