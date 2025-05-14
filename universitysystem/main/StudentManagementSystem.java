@@ -1,4 +1,8 @@
+package main;
 import java.util.ArrayList;
+
+import model.HonorStudent;
+import model.Student;
 
 public class StudentManagementSystem {
 	

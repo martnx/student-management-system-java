@@ -1,12 +1,13 @@
+package model;
 
 public  class Student extends Person implements Enrollable{
 	private Course course;
 	private double gwa;
 	
 	//with Overloading methods
-	Student(String name, int age, int id, String courseName, int units, String instructor, double gwa){
-		super(name, age, id);
-		this.course = new Course(courseName, units, instructor);
+	public Student(int id, String firstName, String lastName, String course, int units, String instructor, double gwa){
+		super(id, firstName, lastName);
+		this.course = new Course(course, units, instructor);
 		this.setGwa(gwa);
 	}
 	//Getter
@@ -32,7 +33,7 @@ public  class Student extends Person implements Enrollable{
 
 	@Override
 	public void viewInfo() {
-		System.out.println("Name: " + getName());
+		System.out.println("Name: " + getFullName());
 		System.out.println("Age: " + getAge());
 		System.out.println("Course: " + course.getCourse() + " Units: " + course.getUnits() + " Instructor: " + course.getInstructor());
 		System.out.printf("GWA: " + "%.2f%n", getGwa());

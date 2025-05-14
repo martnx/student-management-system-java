@@ -1,6 +1,10 @@
+package main;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import manager.HonorRollManager;
+import model.Student;
 
 public class ConsoleView {
 	
@@ -63,7 +67,7 @@ public class ConsoleView {
     	System.out.print("Enter Student GWA: ");
     	double gwa = scan.nextDouble();
     	
-    	system.addStudent(cap, studentAge, system.giveId(), studentCourse, studentUnits, studentInstructor, gwa);
+//    	system.addStudent();
     } 
 
     void addProfessor() {

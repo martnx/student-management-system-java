@@ -1,8 +1,8 @@
-
+package model;
 public class HonorStudent extends Student implements Enrollable{
 	
-	HonorStudent(String name, int age, int id, String courseName, int units, String instructor, double gwa) {
-		super(name, age, id, courseName, units, instructor, gwa);
+	public HonorStudent(int id, String firstName, String lastName, String course, int units, String instructor, double gwa) {
+		super(id, firstName, lastName, course, units, instructor, gwa);
 		
 	}
 
@@ -22,7 +22,7 @@ public class HonorStudent extends Student implements Enrollable{
 	
 	@Override
 	public void viewInfo() {
-		System.out.println("Name: " + getName());
+		System.out.println("Name: " + getFullName());
 		System.out.println("Age: " + getAge());
 		System.out.println("Course: " + getCourse());
 	    System.out.println(printStudentTitle(getGwa()));
