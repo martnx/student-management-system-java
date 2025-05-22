@@ -32,7 +32,6 @@ public class HonorRollManager{
 	private List<Student> getHonorStudents(){
 		List<Student> honorList = new ArrayList<>();
 		for(Student student : studentArray) {
-			System.out.println(student.getName());
 			if(student.getGwa() <= 1.75) {
 				honorList.add(student);
 			}
@@ -60,14 +59,14 @@ public class HonorRollManager{
 		sortHonorStudentsByGwa(honorStudents);
 		
 		for(Person s: honorStudents){
-			System.out.println(s.getName());
+			System.out.println(s.getFullName());
 		}
 		
 		System.out.println("Honor Roll Students - Method");
 	    DecimalFormat df = new DecimalFormat("0.00");
 
 		for(Student student: honorStudents) {
-			System.out.println(student.getName() + " | GWA: " + df.format(student.getGwa()) + " | " + getHonorTitle(student.getGwa()));
+			System.out.println(student.getFullName() + " | GWA: " + df.format(student.getGwa()) + " | " + getHonorTitle(student.getGwa()));
 		}
 		
 	}

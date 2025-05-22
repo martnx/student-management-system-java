@@ -49,7 +49,7 @@ public class Database {
             // Condition check
             while (rs.next()) {
  
-                int person_id = rs.getInt("person_id");
+                int person_id = rs.getInt("person_id");	
                 String first_name = rs.getString("first_name");
                 String last_name = rs.getString("last_name");
                 String course = rs.getString("course");

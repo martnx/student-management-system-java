@@ -7,10 +7,8 @@ import model.Student;
 public class StudentManagementSystem {
 	
 	private ArrayList<Student> studentAL;
-	private Student student;
-	private HonorStudent honorStudent;
 	
-	StudentManagementSystem(){
+	public StudentManagementSystem(){
 		studentAL = new ArrayList<>();	
 //		addStudent("Abra Kabadra", 20, "BS-Medical Technology", 1.25 , giveID());
 //		addStudent("Martin Legaspi", 23, "BS-Business Administration", 1.50, giveID());
@@ -52,7 +50,7 @@ public class StudentManagementSystem {
 	}
 	
 	public void addStudent(String name, int age, String course, double gwa, int id) {	
-
+		
 	}
 	
 	public void viewAllStudents() {

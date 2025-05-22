@@ -27,9 +27,6 @@ public class UniversitySystem {
 		person = new ArrayList<>();
 		database = new Database();
 		students = database.loadStudents();
-        for(Student s: students) {
-        	System.out.println(s.getFullName());
-        }
 		
 		//Professor
 //		addProfessor("Maria Santos", 45, giveId(), "Computer Science");
@@ -82,8 +79,7 @@ public class UniversitySystem {
 	}
 	
 	public void viewAllStudents() {
-
-		if(person.isEmpty()) {
+		if(students.isEmpty()) {
 			System.out.println("No students found.");
 			return;
 		}

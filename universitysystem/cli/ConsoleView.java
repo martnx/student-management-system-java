@@ -1,8 +1,10 @@
-package main;
+package cli;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import main.StudentManagementSystem;
+import main.UniversitySystem;
 import manager.HonorRollManager;
 import model.Student;
 

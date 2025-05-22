@@ -3,21 +3,28 @@ package model;
 public  class Student extends Person implements Enrollable{
 	private Course course;
 	private double gwa;
+	private int units;
 	
 	//with Overloading methods
 	public Student(int id, String firstName, String lastName, String course, int units, String instructor, double gwa){
 		super(id, firstName, lastName);
 		this.course = new Course(course, units, instructor);
 		this.setGwa(gwa);
+		this.units = units;
 	}
 	//Getter
 	public String getCourse() {
 		return course.getCourse();
 	}
 	
+	public int getUnits() {
+		return units;
+	}
+	
 	public double getGwa() {
 		return gwa;
 	}
+	
 	
 	public void setCourse(String course) {
 		this.course.setCourse(course);
@@ -46,5 +53,6 @@ public  class Student extends Person implements Enrollable{
 	public void enroll() {
 		System.out.println("This student is enrolled in " + course.getCourse());
 	}
+
 	
 }
