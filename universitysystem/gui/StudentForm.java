@@ -1,8 +1,11 @@
 package gui;
 
+import db.Database;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -11,6 +14,8 @@ import javax.swing.text.Document;
 import javax.swing.text.Element;
 
 public class StudentForm extends JFrame implements ActionListener, DocumentListener{
+	
+	Database dataBase;
 	
 	JLabel titleLabel;
 	
@@ -32,6 +37,7 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 	
 	JButton submitBtn;
 	JButton cancelBtn;
+	JLabel successInput;
 	
 	String firstNameContainer;
 	String lastNameContainer;
@@ -42,8 +48,7 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 	String gwaContainer;
 	
 	public StudentForm(){
-		//Adding action listener
-
+		dataBase = new Database();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500, 700);
 		this.setLayout(new BorderLayout());
@@ -55,10 +60,11 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 		int textFieldHeight = 35;
 		
 		titleLabel = new JLabel("Add Student Form");
+		titleLabel.setSize(500, 40);
+		titleLabel.setFont(new Font("Serif", Font.PLAIN, 25));
 		
 		JPanel titlePanel = new JPanel();
 		titlePanel.setPreferredSize(new Dimension(500,50));
-		titlePanel.setBackground(Color.red);
 		titlePanel.add(titleLabel);
 		
 		JPanel firstPanel = new JPanel();
@@ -119,6 +125,9 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 		cancelBtn.setPreferredSize(new Dimension(150, 30));
 		cancelBtn.addActionListener(this);
 		
+		successInput = new JLabel("Successfully Registered");
+		successInput.setPreferredSize(new Dimension(150, 30));
+		
 		submitBtn.setEnabled(false);
 		firstName.getDocument().addDocumentListener(this);
 		lastName.getDocument().addDocumentListener(this);
@@ -153,6 +162,8 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 		secondPanel.add(submitBtn);
 		secondPanel.add(cancelBtn);
 		
+		secondPanel.add(successInput);
+		successInput.setVisible(false);
 		this.add(titlePanel,BorderLayout.NORTH);
 		this.add(firstPanel,BorderLayout.WEST);
 		this.add(secondPanel,BorderLayout.EAST);
@@ -166,10 +177,6 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		
-		if(e.getSource() == firstName) {
-			System.out.println("clicked");
-		}
 		if(e.getSource() == submitBtn) {
 			submitButton();
 		}
@@ -180,14 +187,6 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 	
 	
 	void checkValidate() {
-//		if((firstNameContainer == "1") && (lastNameContainer == "1") && (ageContainer == "1") && (unitsContainer == "1") && (instructorContainer == "1") && (gwaContainer == "1")) {
-//			submitBtn.setEnabled(false);
-//			System.out.println("false");
-//		}
-//		else {
-//			submitBtn.setEnabled(true);
-//			System.out.println("true");
-//		}
 		if((firstName.getText().length()==0) || (lastName.getText().length()==0) || (age.getText().length()==0) || (course.getText().length()==0) || (units.getText().length()==0) || (instructor.getText().length()==0) || (gwa.getText().length()==0)) {
 			submitBtn.setEnabled(false);
 			System.out.println("true");
@@ -198,14 +197,17 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 		
 	}
 	
-	void submitButton() 
+	void submitButton()
 	{
-		
+		dataBase.addStudents(firstNameContainer, lastNameContainer, courseContainer, unitsContainer, instructorContainer, gwaContainer);
+
+		submitBtn.setEnabled(false);
+		successInput.setVisible(true);
+
 	}
 
 	@Override
 	public void insertUpdate(DocumentEvent e) {
-		System.out.println("Insert Update");
 		firstNameContainer = firstName.getText();
 		lastNameContainer = lastName.getText();
 		ageContainer = age.getText();
@@ -232,12 +234,7 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 
 	@Override
 	public void changedUpdate(DocumentEvent e) {
-		System.out.println(e.getDocument());
 		System.out.println("Changed Update!");
 	}
-	
-	
-	
-	//Method that can get the value of the textfield
 
 }

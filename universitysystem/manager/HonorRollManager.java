@@ -17,7 +17,7 @@ public class HonorRollManager{
 	List<Student> studentArray;
 
 	
-	HonorRollManager() {
+	public HonorRollManager() {
 		uSystem = new UniversitySystem();
 		studentArray = new ArrayList<>();
 		allPerson = uSystem.getList();

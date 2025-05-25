@@ -3,14 +3,12 @@ package model;
 public  class Student extends Person implements Enrollable{
 	private Course course;
 	private double gwa;
-	private int units;
 	
 	//with Overloading methods
 	public Student(int id, String firstName, String lastName, String course, int units, String instructor, double gwa){
 		super(id, firstName, lastName);
 		this.course = new Course(course, units, instructor);
 		this.setGwa(gwa);
-		this.units = units;
 	}
 	//Getter
 	public String getCourse() {
@@ -18,16 +16,26 @@ public  class Student extends Person implements Enrollable{
 	}
 	
 	public int getUnits() {
-		return units;
+		return course.getUnits();
+	}
+	public String getInstructor() {
+		return course.getInstructor();
 	}
 	
 	public double getGwa() {
 		return gwa;
 	}
 	
+	//Setter
+	public void setCourse(String courseName) {
+		course.setCourse(courseName);
+	}
 	
-	public void setCourse(String course) {
-		this.course.setCourse(course);
+	public void setUnits(int units) {
+		course.setUnits(units);
+	}
+	public void setInstructor(String instructor) {
+		course.setInstructor(instructor);
 	}
 	
 	public void setGwa(double gwa) {

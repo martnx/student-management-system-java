@@ -1,19 +1,19 @@
 package model;
 
 public class Course{
-	private String courseName;
+	private String course;
 	private int units;
 	private String instructor;
 	
-	Course(String courseName, int units, String instructor){
-		this.setCourse(courseName);
+	Course(String course, int units, String instructor){
+		this.setCourse(course);
 		this.setUnits(units);
 		this.setInstructor(instructor);
 	}
 	
 	//Getter
 	public String getCourse() {
-		return courseName;
+		return course;
 	}
 	
 	public int getUnits() {
@@ -25,8 +25,8 @@ public class Course{
 	}
 	
 	//Setter
-	public void setCourse(String courseName) {
-		this.courseName = courseName;
+	public void setCourse(String course) {
+		this.course = course;
 	}
 	
 	public void setUnits(int unit) {

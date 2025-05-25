@@ -11,6 +11,7 @@ public class Database {
 	private Connection conn = null;
     private PreparedStatement p = null;
     private ResultSet rs = null;
+    private Statement s = null;
     
     //class
     Person person;
@@ -29,8 +30,62 @@ public class Database {
         }
 	}
 	
-	public void addStudents() {
-		
+	public void addStudents(String firstName, String lastName, String course, String units, String instructor, String gwa){
+	   String sql = "INSERT INTO students(first_name, last_name, course, units, instructor, gwa) VALUES(" + "'" + firstName +  "'" +", " +  "'" + lastName +  "'" + ", " +  "'" + course +  "'" + ", " +  "'" + units +  "'" + ", " +  "'" + instructor + "'" + ", " + 
+			   "'" + gwa +  "'" +");";
+	   System.out.println(sql);
+        try {
+			System.out.println("✅Connected to Database (MySQL univesityDB) = addStudent method");
+    		s = conn.createStatement();
+            s.executeUpdate(sql);
+           
+         
+        }
+        catch (SQLException e) {
+        	System.out.println(e);
+        }
+	}
+	
+	public String deleteStudent(String idToPass) {
+		String first_name = null;
+
+		String sql = "select * from students";
+		try {
+			int id = Integer.parseInt(idToPass);
+			String sqlDelete = "delete from students where person_id= " + id + "";		
+			System.out.println("✅Connected to Database (MySQL univesityDB) = deleteStudent method");
+			System.out.println(id);
+            p = conn.prepareStatement(sql);
+            rs = p.executeQuery();
+            
+//            if(rs.next()) {
+//            	String firstName = rs.getString("first_name");
+//            	p = conn.prepareStatement(sqlDelete);
+//            	p.setInt(1, id);
+//            	p.executeUpdate();
+//            	
+//            }   
+            
+            
+            while(rs.next()) {
+            	int person_id = rs.getInt("person_id");
+            	System.out.println(person_id);
+            	if(person_id == id) {
+                    p = conn.prepareStatement(sqlDelete);
+                    p.execute();
+                    System.out.println("This user is deleted - " + id);
+                    return first_name = rs.getString("first_name");
+            	}
+            }
+		}
+		catch (SQLException e){
+			System.out.println(e);
+		}
+		catch (NumberFormatException e) {
+			System.out.println(e);
+			return null;
+		}
+		return first_name;
 	}
 	
 	public List<Student> loadStudents(){

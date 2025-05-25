@@ -44,7 +44,7 @@ public class StudentListView extends JFrame{
                 s.getAge(),
                 s.getCourse(),
                 s.getUnits(),
-//                s.getInstructor(),
+                s.getInstructor(),
                 s.getGwa()
             });
         }

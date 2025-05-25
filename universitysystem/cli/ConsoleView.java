@@ -92,7 +92,7 @@ public class ConsoleView {
     	System.out.print("Enter Professor Department: ");
     	String profDepartment = scan.nextLine();
     	
-    	system.addProfessor(cap, profAge, system.giveId(), profDepartment);
+//    	system.addProfessor(cap, profAge, system.giveId(), profDepartment);
     	
     }
     
