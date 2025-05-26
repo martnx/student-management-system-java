@@ -15,28 +15,3 @@ A simple **Student Management System** built using **Java (Swing GUI)** and **My
 ✅ JDBC integration for MySQL (via `Database.java`)
 
 ---
-
-## 📁 Project Structure
-
-universitysystem/
-│
-├── db/ # MySQL DB connection and logic
-│ └── Database.java
-│
-├── gui/ # Java Swing forms (GUI)
-│ ├── StudentForm.java
-│ ├── StudentListView.java
-│ └── StudentDeleteForm.java
-│
-├── manager/ # Business logic (e.g., Honor Roll)
-│ └── HonorRollManager.java
-│
-├── model/ # OOP entities
-│ ├── Student.java
-│ ├── HonorStudent.java
-│ ├── Professor.java
-│ ├── Course.java
-│ └── Person.java
-│
-└── main/ # Entry point and system setup
-└── Main.java
