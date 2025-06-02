@@ -100,9 +100,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         errorLabel.setPreferredSize(new Dimension(200, labelHeight));
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        //Make appear window that show the full data and make button of every data of it.
-
-
         firstPanelSecondFrame.add(searchIDLabel);
         firstPanelSecondFrame.add(searchIDTextField);
         firstPanelSecondFrame.add(searchButton);
