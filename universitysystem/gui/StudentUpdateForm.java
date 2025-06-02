@@ -1,6 +1,7 @@
 package gui;
 
 import db.Database;
+import model.Student;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -8,6 +9,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class StudentUpdateForm extends JFrame implements ActionListener, DocumentListener {
     Database dataBase;
@@ -113,15 +115,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
 
     }
 
-    void viewAllDataFrame() {
-
-
-
-    }
-
     public void fullInfoFrame(){
-        dataBase = new Database();
-
         int labelWidth = 100;
         int labelHeight = 50;
 
@@ -315,8 +309,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         String searchID = searchIDTextField.getText();
         if(isNumber(searchID)) {
             int person_ID = Integer.parseInt(searchID);
-//            viewAllDataFrame(person_ID);
-//            System.out.println("TEST");
+            displayDatainTextField(person_ID);
         }
         else{
             errorLabel.setText("Invalid Input");
@@ -325,6 +318,27 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
             firstPanelSecondFrame.revalidate(); // Add these
             firstPanelSecondFrame.repaint();
         }
+
+    }
+
+    public void displayDatainTextField(int person_id) {
+
+        dataBase = new Database();
+        List<Student> students = dataBase.loadStudents();
+
+        for(Student student : students){
+            if(student.getId() == person_id){
+                System.out.println(student.getFirstName());
+//                firstNameTextField.setText(student.getFirstName());
+//                lastNameTextField.setText(student.getLastName());
+//                ageTextField.setText(String.valueOf(student.getAge()));
+//                courseTextField.setText(String.valueOf(student.getCourse()));
+//                unitsTextField.setText(String.valueOf(student.getUnits()));
+//                instructorTextField.setText(String.valueOf(student.getInstructor()));
+//                gwaTextField.setText(String.valueOf(student.getGwa()));
+            }
+        }
+        fullInfoFrame();
 
     }
 
@@ -348,32 +362,29 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
             firstNameTextField.setEnabled(true);
         }
 
-        if(e.getSource() == lastNameTextField){
+        if(e.getSource() == lastNameEditButton){
             lastNameTextField.setEnabled(true);
         }
 
-        if(e.getSource() == ageTextField){
+        if(e.getSource() == ageEditButton){
             ageTextField.setEnabled(true);
         }
 
-        if(e.getSource() == courseTextField){
+        if(e.getSource() == courseEditButton){
             courseTextField.setEnabled(true);
         }
 
-        if(e.getSource() == unitsTextField){
+        if(e.getSource() == unitsEditButton){
             unitsTextField.setEnabled(true);
         }
 
-        if(e.getSource() == instructorTextField){
+        if(e.getSource() == instructorEditButton){
             instructorTextField.setEnabled(true);
         }
 
-        if(e.getSource() == gwaTextField){
+        if(e.getSource() == gwaEditButton){
             gwaTextField.setEnabled(true);
         }
-
-
-
 
     }
 
