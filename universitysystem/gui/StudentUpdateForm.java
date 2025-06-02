@@ -13,7 +13,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
     Database dataBase;
 
     JPanel titlePanel;
-    JPanel firstPanelSecondFrame;
 
     JLabel titleLabel;
     JLabel searchIDLabel;
@@ -24,13 +23,14 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
 
     JLabel errorLabel;
 
-    JFrame fullInfoFrame;
-
-    //View all frame Variables
+    //View all 2nd frame Variables
     JFrame fullInfoFrameSecondFrame;
 
-    JLabel titleLabelSecondFrame;
+    JPanel titlePanelSecondFrame;
+    JPanel firstPanelSecondFrame;
+    JPanel secondPanelSecondFrame;
 
+    JLabel titleLabelSecondFrame;
     JLabel fnLabel;
     JLabel lnLabel;
     JLabel ageLabel;
@@ -39,13 +39,13 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
     JLabel instructorLabel;
     JLabel gwaLabel;
 
-    JTextField firstName;
-    JTextField lastName;
-    JTextField age;
-    JTextField course;
-    JTextField units;
-    JTextField instructor;
-    JTextField gwa;
+    JTextField firstNameTextField;
+    JTextField lastNameTextField;
+    JTextField ageTextField;
+    JTextField courseTextField;
+    JTextField unitsTextField;
+    JTextField instructorTextField;
+    JTextField gwaTextField;
 
     JButton firstNameEditButton;
     JButton lastNameEditButton;
@@ -100,9 +100,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         errorLabel.setPreferredSize(new Dimension(200, labelHeight));
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        //Make appear window that show the full data and make button of every data of it.
-
-
         firstPanelSecondFrame.add(searchIDLabel);
         firstPanelSecondFrame.add(searchIDTextField);
         firstPanelSecondFrame.add(searchButton);
@@ -116,16 +113,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
 
     }
 
-    boolean isNumber(String input){
-        try{
-            Integer.parseInt(input);
-            return true;
-        }catch (NumberFormatException e){
-            System.out.println(e);
-            return false;
-        }
-    }
-
     void viewAllDataFrame() {
 
 
@@ -134,8 +121,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
 
     public void fullInfoFrame(){
         dataBase = new Database();
-
-
 
         int labelWidth = 100;
         int labelHeight = 50;
@@ -153,16 +138,16 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         titleLabelSecondFrame.setSize(500, 40);
         titleLabelSecondFrame.setFont(new Font("Serif", Font.PLAIN, 25));
 
-        JPanel titlePanel = new JPanel();
-        titlePanel.setPreferredSize(new Dimension(500,50));
-        titlePanel.add(titleLabelSecondFrame);
+        titlePanelSecondFrame = new JPanel();
+        titlePanelSecondFrame.setPreferredSize(new Dimension(500,50));
+        titlePanelSecondFrame.add(titleLabelSecondFrame);
 
-        JPanel firstPanelSecondFrame = new JPanel();
+        firstPanelSecondFrame = new JPanel();
         firstPanelSecondFrame.setPreferredSize(new Dimension(500,250));
 //		firstPanel.setBackground(Color.cyan);
         firstPanelSecondFrame.setLayout(new FlowLayout());
 
-        JPanel secondPanelSecondFrame = new JPanel();
+        secondPanelSecondFrame = new JPanel();
         secondPanelSecondFrame.setPreferredSize(new Dimension(500,250));
 //		secondPanel.setBackground(Color.red);
         secondPanelSecondFrame.setLayout(new FlowLayout());
@@ -170,63 +155,65 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         fnLabel = new JLabel("First Name");
         fnLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
 
-        firstName = new JTextField();
-        firstName.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
-        firstName.setText("This is testing");
-        firstName.setEditable(false);
+        firstNameTextField = new JTextField();
+        firstNameTextField.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         firstNameEditButton = new JButton("Edit");
         firstNameEditButton.setPreferredSize(new Dimension(65, textFieldHeight));
 
         lnLabel = new JLabel("Last Name");
         lnLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
-        lastName = new JTextField();
-        lastName.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
+
+        lastNameTextField = new JTextField();
+        lastNameTextField.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         lastNameEditButton = new JButton("Edit");
         lastNameEditButton.setPreferredSize(new Dimension(65, textFieldHeight));
 
         ageLabel = new JLabel("Age");
         ageLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
-        age = new JTextField();
-        age.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
+
+        ageTextField = new JTextField();
+        ageTextField.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         ageEditButton = new JButton("Edit");
         ageEditButton.setPreferredSize(new Dimension(65, textFieldHeight));
 
         courseLabel = new JLabel("Course");
         courseLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
-        course = new JTextField();
-        course.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
+
+        courseTextField = new JTextField();
+        courseTextField.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         courseEditButton = new JButton("Edit");
         courseEditButton.setPreferredSize(new Dimension(65, textFieldHeight));
 
         unitsLabel = new JLabel("Units");
         unitsLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
-        units = new JTextField();
-        units.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
+
+        unitsTextField = new JTextField();
+        unitsTextField.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         unitsEditButton = new JButton("Edit");
         unitsEditButton.setPreferredSize(new Dimension(65, textFieldHeight));
 
         instructorLabel = new JLabel("Instructor");
         instructorLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
-        instructor = new JTextField();
-        instructor.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
+
+        instructorTextField = new JTextField();
+        instructorTextField.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         instructorEditButton = new JButton("Edit");
         instructorEditButton.setPreferredSize(new Dimension(65, textFieldHeight));
 
         gwaLabel = new JLabel("Gwa");
         gwaLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
-        gwa = new JTextField();
-        gwa.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
+
+        gwaTextField = new JTextField();
+        gwaTextField.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         gwaLabel = new JLabel("Gwa");
         gwaLabel.setPreferredSize(new Dimension(labelWidth,labelHeight));
-        gwa = new JTextField();
-        gwa.setPreferredSize(new Dimension(textFieldWidth,textFieldHeight));
 
         gwaEditButton = new JButton("Edit");
         gwaEditButton.setPreferredSize(new Dimension(65, textFieldHeight));
@@ -242,42 +229,63 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         successInput = new JLabel("Successfully Registered");
         successInput.setPreferredSize(new Dimension(150, 30));
 
-        cancelBtnSecondFrame.setEnabled(false);
-        firstName.getDocument().addDocumentListener(this);
-        lastName.getDocument().addDocumentListener(this);
-        age.getDocument().addDocumentListener(this);
-        course.getDocument().addDocumentListener(this);
-        units.getDocument().addDocumentListener(this);
-        instructor.getDocument().addDocumentListener(this);
-        gwa.getDocument().addDocumentListener(this);
+        //ActionListener
+        firstNameEditButton.addActionListener(this);
+        lastNameEditButton.addActionListener(this);
+        ageEditButton.addActionListener(this);
+        courseEditButton.addActionListener(this);
+        unitsEditButton.addActionListener(this);
+        instructorEditButton.addActionListener(this);
+        gwaEditButton.addActionListener(this);
+        submitBtnSecondFrame.addActionListener(this);
+        cancelBtnSecondFrame.addActionListener(this);
+
+
+        //DocumentListener
+        firstNameTextField.getDocument().addDocumentListener(this);
+        lastNameTextField.getDocument().addDocumentListener(this);
+        ageTextField.getDocument().addDocumentListener(this);
+        courseTextField.getDocument().addDocumentListener(this);
+        unitsTextField.getDocument().addDocumentListener(this);
+        instructorTextField.getDocument().addDocumentListener(this);
+        gwaTextField.getDocument().addDocumentListener(this);
+
+        //All textfield must be disabled
+        firstNameTextField.setEnabled(false);
+        lastNameTextField.setEnabled(false);
+        ageTextField.setEnabled(false);
+        courseTextField.setEnabled(false);
+        unitsTextField.setEnabled(false);
+        instructorTextField.setEnabled(false);
+        gwaTextField.setEnabled(false);
 
         firstPanelSecondFrame.add(fnLabel);
-        firstPanelSecondFrame.add(firstName);
+        firstPanelSecondFrame.add(firstNameTextField);
         firstPanelSecondFrame.add(firstNameEditButton);
 
         firstPanelSecondFrame.add(lnLabel);
-        firstPanelSecondFrame.add(lastName);
+        firstPanelSecondFrame.add(lastNameTextField);
         firstPanelSecondFrame.add(lastNameEditButton);
 
         firstPanelSecondFrame.add(ageLabel);
-        firstPanelSecondFrame.add(age);
+        firstPanelSecondFrame.add(ageTextField);
         firstPanelSecondFrame.add(ageEditButton);
 
         firstPanelSecondFrame.add(courseLabel);
-        firstPanelSecondFrame.add(course);
+        firstPanelSecondFrame.add(courseTextField);
         firstPanelSecondFrame.add(courseEditButton);
 
         //second panel
         secondPanelSecondFrame.add(unitsLabel);
-        secondPanelSecondFrame.add(units);
+        secondPanelSecondFrame.add(unitsTextField);
         secondPanelSecondFrame.add(unitsEditButton);
 
         secondPanelSecondFrame.add(instructorLabel);
-        secondPanelSecondFrame.add(instructor);
+        secondPanelSecondFrame.add(instructorTextField);
         secondPanelSecondFrame.add(instructorEditButton);
 
         secondPanelSecondFrame.add(gwaLabel);
-        secondPanelSecondFrame.add(gwa);
+        secondPanelSecondFrame.add(gwaTextField);
         secondPanelSecondFrame.add(gwaEditButton);
 
         secondPanelSecondFrame.add(submitBtnSecondFrame);
@@ -285,12 +293,22 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
 
         secondPanelSecondFrame.add(successInput);
 
-        fullInfoFrameSecondFrame.add(titleLabelSecondFrame,BorderLayout.NORTH);
+        fullInfoFrameSecondFrame.add(titlePanelSecondFrame,BorderLayout.NORTH);
         fullInfoFrameSecondFrame.add(firstPanelSecondFrame,BorderLayout.WEST);
         fullInfoFrameSecondFrame.add(secondPanelSecondFrame,BorderLayout.EAST);
         fullInfoFrameSecondFrame.pack();
         fullInfoFrameSecondFrame.setLocationRelativeTo(null);
         fullInfoFrameSecondFrame.setVisible(true);
+    }
+
+    boolean isNumber(String input){
+        try{
+            Integer.parseInt(input);
+            return true;
+        }catch (NumberFormatException e){
+            System.out.println(e);
+            return false;
+        }
     }
 
     void searchButton(){
@@ -299,8 +317,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
             int person_ID = Integer.parseInt(searchID);
 //            viewAllDataFrame(person_ID);
 //            System.out.println("TEST");
-
-
         }
         else{
             errorLabel.setText("Invalid Input");
@@ -310,9 +326,9 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
             firstPanelSecondFrame.repaint();
         }
 
-
     }
 
+    //ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == searchButton) {
@@ -324,14 +340,46 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
             this.dispose();
         }
 
-//        if(e.getSource() == firstNameEditButton)
+        if(e.getSource() == cancelBtnSecondFrame){
+            fullInfoFrameSecondFrame.dispose();
+        }
+
+        if(e.getSource() == firstNameEditButton){
+            firstNameTextField.setEnabled(true);
+        }
+
+        if(e.getSource() == lastNameTextField){
+            lastNameTextField.setEnabled(true);
+        }
+
+        if(e.getSource() == ageTextField){
+            ageTextField.setEnabled(true);
+        }
+
+        if(e.getSource() == courseTextField){
+            courseTextField.setEnabled(true);
+        }
+
+        if(e.getSource() == unitsTextField){
+            unitsTextField.setEnabled(true);
+        }
+
+        if(e.getSource() == instructorTextField){
+            instructorTextField.setEnabled(true);
+        }
+
+        if(e.getSource() == gwaTextField){
+            gwaTextField.setEnabled(true);
+        }
+
+
 
 
     }
 
     @Override
     public void insertUpdate(DocumentEvent e) {
-
+        System.out.println(e.getDocument().getLength());
     }
 
     @Override
