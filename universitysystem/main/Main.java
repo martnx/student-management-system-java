@@ -17,6 +17,7 @@ public class Main {
 //		new ConsoleView();
 
 		StudentUpdateForm suf = new StudentUpdateForm();
+//		suf.fullInfoFrame();
 
 	}
 

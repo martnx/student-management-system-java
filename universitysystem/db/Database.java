@@ -31,26 +31,6 @@ public class Database {
         }
 	}
 
-//    public List<Student> giveStudentData(int person_id){
-////        String sqlSelect = "select * from students";
-////        try{
-////            System.out.println("✅Connected to Database (MySQL univesityDB) = giveStudentData method");
-////            p = conn.prepareStatement(sqlSelect);
-////            rs = p.executeQuery();
-////
-////                if(rs.next()) {
-////                    String firstName = rs.getString("first_name");
-////                    p = conn.prepareStatement(sqlSelect);
-////                    p.setInt(1, person_id);
-////                    p.executeUpdate();
-////                }
-////
-////        }catch (SQLException e) {
-////            System.out.println(e);
-////        }
-////        return student;
-//    }
-
 	public void addStudents(String firstName, String lastName, String course, String units, String instructor, String gwa){
 	   String sql = "INSERT INTO students(first_name, last_name, course, units, instructor, gwa) VALUES(" + "'" + firstName +  "'" +", " +  "'" + lastName +  "'" + ", " +  "'" + course +  "'" + ", " +  "'" + units +  "'" + ", " +  "'" + instructor + "'" + ", " + 
 			   "'" + gwa +  "'" +");";
@@ -118,11 +98,7 @@ public class Database {
             String sql = "select * from students";
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
- 
-            // Printing ID, name, email of customers
-            // of the SQL command above
-            System.out.println("first_name/last_name/person_id");
- 
+
             // Condition check
             while (rs.next()) {
  
