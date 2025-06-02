@@ -103,7 +103,7 @@ public class StudentManagementSystem {
 		for(int i = 0; i < studentAL.size(); i++) {
 			Student str = studentAL.get(i);
 			if(str.getId() == id) {
-				System.out.println("Student: " + str.getName() + " has been removed.");
+				System.out.println("Student: " + str.getFullName() + " has been removed.");
 				studentAL.remove(i);
 				studentFound = true;
 			}

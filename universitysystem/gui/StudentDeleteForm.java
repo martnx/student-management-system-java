@@ -34,7 +34,8 @@ public class StudentDeleteForm extends JFrame implements ActionListener, Documen
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500, 700);
 		this.setLayout(new BorderLayout());
-		
+		this.setResizable(false);
+
 		int labelWidth = 100;
 		int labelHeight = 50;
 		
@@ -91,7 +92,7 @@ public class StudentDeleteForm extends JFrame implements ActionListener, Documen
 		
 		this.add(firstPanel);
 		this.add(titlePanel,BorderLayout.NORTH);
-		this.pack();
+//		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		

@@ -12,9 +12,13 @@ public class Main {
 //		new StudentForm();
 //		new AddStudent();
 		
-		new StudentDeleteForm();
-//		new StudentListView();
+//		new StudentDeleteForm();
+		new StudentListView();
 //		new ConsoleView();
+
+		StudentUpdateForm suf = new StudentUpdateForm();
+//		suf.fullInfoFrame();
+
 	}
 
 }

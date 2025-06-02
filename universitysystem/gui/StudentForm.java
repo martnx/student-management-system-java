@@ -52,6 +52,7 @@ public class StudentForm extends JFrame implements ActionListener, DocumentListe
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500, 700);
 		this.setLayout(new BorderLayout());
+		this.setResizable(false);
 
 		int labelWidth = 100;
 		int labelHeight = 50;
