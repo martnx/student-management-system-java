@@ -11,7 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class StudentUpdateForm extends JFrame implements ActionListener {
+public class StudentUpdateForm extends JFrame implements ActionListener
+{
     Database dataBase;
     List<Student> students;
 
@@ -64,7 +65,8 @@ public class StudentUpdateForm extends JFrame implements ActionListener {
     JButton cancelBtnSecondFrame;
     JLabel successInput;
 
-    public StudentUpdateForm() {
+    public StudentUpdateForm()
+    {
         //Database connection
         dataBase = new Database();
 
@@ -122,7 +124,8 @@ public class StudentUpdateForm extends JFrame implements ActionListener {
 
     }
 
-    public void fullInfoFrame(){
+    void fullInfoFrame()
+    {
         int labelWidth = 100;
         int labelHeight = 50;
 
@@ -300,12 +303,13 @@ public class StudentUpdateForm extends JFrame implements ActionListener {
             return false;
         }
     }
-
-    public void displayDataInTextField(int person_id) {
+    public void displayDataInTextField(int person_id)
+    {
         List<Student> students = dataBase.loadStudents();
         boolean isFound = false;
         for(Student student : students) {
-            if (student.getId() == person_id) {
+            if (student.getId() == person_id)
+            {
                 fullInfoFrame();
                 firstNameTextField.setText(student.getFirstName());
                 lastNameTextField.setText(student.getLastName());
@@ -322,7 +326,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener {
             }
         }
         if(!isFound){
-            System.out.println("Is found!");
             errorLabel.setVisible(true);
             errorLabel.setText("No Student ID Found");
             firstPanelSecondFrame.revalidate();
@@ -330,33 +333,37 @@ public class StudentUpdateForm extends JFrame implements ActionListener {
         }
     }
 
-    void searchButton(){
+    void searchButton()
+    {
         String searchID = searchIDTextField.getText();
-        if(isNumber(searchID)) {
+        if(isNumber(searchID))
+        {
             int person_ID = Integer.parseInt(searchID);
             displayDataInTextField(person_ID);
-            System.out.println("Search ID: " + searchID);
         }
-        else{
+        else
+        {
             errorLabel.setVisible(true);
             errorLabel.setText("Invalid Input");
-            System.out.println("Invalid Input");
-            firstPanelSecondFrame.revalidate(); // Add these
+            firstPanelSecondFrame.revalidate();
             firstPanelSecondFrame.repaint();
         }
 
     }
 
-    void submitUpdatedData(){
+    void submitUpdatedData()
+    {
         System.out.println(firstNameTextField.getText());
     }
 
     //ActionListener
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
         if(e.getSource() == searchButton) {
             searchButton();
         }
+
         if(e.getSource() == cancelButton) {
             this.dispose();
         }
