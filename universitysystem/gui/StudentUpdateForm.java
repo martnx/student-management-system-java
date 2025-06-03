@@ -296,10 +296,12 @@ public class StudentUpdateForm extends JFrame implements ActionListener
     }
 
     boolean isNumber(String input){
-        try{
+        try
+        {
             Integer.parseInt(input);
             return true;
-        }catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e){
             return false;
         }
     }
