@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class StudentUpdateForm extends JFrame implements ActionListener, DocumentListener {
+public class StudentUpdateForm extends JFrame implements ActionListener {
     Database dataBase;
     List<Student> students;
 
@@ -58,6 +58,8 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
     JButton instructorEditButton;
     JButton gwaEditButton;
 
+    boolean isFound = false;
+
     JButton submitBtnSecondFrame;
     JButton cancelBtnSecondFrame;
     JLabel successInput;
@@ -102,7 +104,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         cancelButton.setPreferredSize(new Dimension(labelWidth, 30));
         cancelButton.addActionListener(this);
 
-        errorLabel = new JLabel("User does not exist.");
+        errorLabel = new JLabel("");
         errorLabel.setPreferredSize(new Dimension(200, labelHeight));
         errorLabel.setHorizontalAlignment(JLabel.CENTER);
 
@@ -110,6 +112,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         firstPanelSecondFrame.add(searchIDTextField);
         firstPanelSecondFrame.add(searchButton);
         firstPanelSecondFrame.add(cancelButton);
+        firstPanelSecondFrame.add(errorLabel);
 
         this.add(firstPanelSecondFrame);
         this.add(titlePanel, BorderLayout.NORTH);
@@ -238,16 +241,6 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         submitBtnSecondFrame.addActionListener(this);
         cancelBtnSecondFrame.addActionListener(this);
 
-
-        //DocumentListener
-        firstNameTextField.getDocument().addDocumentListener(this);
-        lastNameTextField.getDocument().addDocumentListener(this);
-        ageTextField.getDocument().addDocumentListener(this);
-        courseTextField.getDocument().addDocumentListener(this);
-        unitsTextField.getDocument().addDocumentListener(this);
-        instructorTextField.getDocument().addDocumentListener(this);
-        gwaTextField.getDocument().addDocumentListener(this);
-
         //All textfield must be disabled
         firstNameTextField.setEditable(false);
         lastNameTextField.setEditable(false);
@@ -304,13 +297,11 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
             Integer.parseInt(input);
             return true;
         }catch (NumberFormatException e){
-            System.out.println(e);
             return false;
         }
     }
 
-    public void displayDatainTextField(int person_id) {
-
+    public void displayDataInTextField(int person_id) {
         List<Student> students = dataBase.loadStudents();
         boolean isFound = false;
         for(Student student : students) {
@@ -325,14 +316,16 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
                 gwaTextField.setText(String.valueOf(student.getGwa()));
 
                 isFound = true;
+                errorLabel.setVisible(false);
                 fullInfoFrameSecondFrame.setVisible(true);
 
             }
         }
         if(!isFound){
+            System.out.println("Is found!");
+            errorLabel.setVisible(true);
             errorLabel.setText("No Student ID Found");
-            firstPanelSecondFrame.add(errorLabel);
-            firstPanelSecondFrame.revalidate(); // Add these
+            firstPanelSecondFrame.revalidate();
             firstPanelSecondFrame.repaint();
         }
     }
@@ -341,16 +334,21 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
         String searchID = searchIDTextField.getText();
         if(isNumber(searchID)) {
             int person_ID = Integer.parseInt(searchID);
-            displayDatainTextField(person_ID);
+            displayDataInTextField(person_ID);
+            System.out.println("Search ID: " + searchID);
         }
         else{
+            errorLabel.setVisible(true);
             errorLabel.setText("Invalid Input");
-            System.out.println("Search ID is empty.");
-            firstPanelSecondFrame.add(errorLabel);
+            System.out.println("Invalid Input");
             firstPanelSecondFrame.revalidate(); // Add these
             firstPanelSecondFrame.repaint();
         }
 
+    }
+
+    void submitUpdatedData(){
+        System.out.println(firstNameTextField.getText());
     }
 
     //ActionListener
@@ -358,10 +356,13 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == searchButton) {
             searchButton();
-
         }
         if(e.getSource() == cancelButton) {
             this.dispose();
+        }
+
+        if(e.getSource() == submitBtnSecondFrame){
+            submitUpdatedData();
         }
 
         if(e.getSource() == cancelBtnSecondFrame){
@@ -398,18 +399,4 @@ public class StudentUpdateForm extends JFrame implements ActionListener, Documen
 
     }
 
-    @Override
-    public void insertUpdate(DocumentEvent e) {
-        System.out.println(e.getDocument().getLength());
-    }
-
-    @Override
-    public void removeUpdate(DocumentEvent e) {
-
-    }
-
-    @Override
-    public void changedUpdate(DocumentEvent e) {
-
-    }
 }
