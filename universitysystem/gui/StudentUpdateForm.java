@@ -63,7 +63,11 @@ public class StudentUpdateForm extends JFrame implements ActionListener
 
     JButton submitBtnSecondFrame;
     JButton cancelBtnSecondFrame;
-    JLabel successInput;
+    JLabel editSuccessLabel;
+
+    boolean theyEdit = false;
+
+    int currentSearchId;
 
     public StudentUpdateForm()
     {
@@ -224,14 +228,14 @@ public class StudentUpdateForm extends JFrame implements ActionListener
 
         submitBtnSecondFrame = new JButton("Submit");
         submitBtnSecondFrame.setPreferredSize(new Dimension(150, 30));
-        submitBtnSecondFrame.addActionListener(this);
 
         cancelBtnSecondFrame = new JButton("Cancel");
         cancelBtnSecondFrame.setPreferredSize(new Dimension(150, 30));
-        cancelBtnSecondFrame.addActionListener(this);
 
-        successInput = new JLabel("Successfully Registered");
-        successInput.setPreferredSize(new Dimension(150, 30));
+        editSuccessLabel = new JLabel("Edit successfully!");
+        editSuccessLabel.setPreferredSize(new Dimension(200, 30));
+        editSuccessLabel.setHorizontalAlignment(JLabel.CENTER);
+        editSuccessLabel.setVisible(false);
 
         //ActionListener
         firstNameEditButton.addActionListener(this);
@@ -285,7 +289,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener
         secondPanelSecondFrame.add(submitBtnSecondFrame);
         secondPanelSecondFrame.add(cancelBtnSecondFrame);
 
-        secondPanelSecondFrame.add(successInput);
+        secondPanelSecondFrame.add(editSuccessLabel);
 
         fullInfoFrameSecondFrame.add(titlePanelSecondFrame,BorderLayout.NORTH);
         fullInfoFrameSecondFrame.add(firstPanelSecondFrame,BorderLayout.WEST);
@@ -343,6 +347,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener
         if(isNumber(searchID))
         {
             int person_ID = Integer.parseInt(searchID);
+            currentSearchId = person_ID;
             displayDataInTextField(person_ID);
         }
         else
@@ -355,15 +360,21 @@ public class StudentUpdateForm extends JFrame implements ActionListener
 
     }
 
-    void submitUpdatedData()
+    void submitUpdatedData(int person_id)
     {
-        String firstName = firstNameTextField.getText();
-        String lastName = lastNameTextField.getText();
-        String age = ageTextField.getText();
-        String course = courseTextField.getText();
-        String units = unitsTextField.getText();
-        String instructor = instructorTextField.getText();
-        String gwa = gwaTextField.getText();
+        if(theyEdit)
+        {
+            editSuccessLabel.setVisible(true);
+            String firstName = firstNameTextField.getText();
+            String lastName = lastNameTextField.getText();
+            String age = ageTextField.getText();
+            String course = courseTextField.getText();
+            String units = unitsTextField.getText();
+            String instructor = instructorTextField.getText();
+            String gwa = gwaTextField.getText();
+
+            dataBase.updateStudent(currentSearchId, firstName, lastName, age, course, units, instructor, gwa);
+        }
     }
 
     //ActionListener
@@ -378,42 +389,48 @@ public class StudentUpdateForm extends JFrame implements ActionListener
             this.dispose();
         }
 
-        if(e.getSource() == submitBtnSecondFrame){
-            submitUpdatedData();
-        }
-
         if(e.getSource() == cancelBtnSecondFrame){
             fullInfoFrameSecondFrame.dispose();
         }
 
         if(e.getSource() == firstNameEditButton){
             firstNameTextField.setEditable(true);
+            theyEdit = true;
         }
 
         if(e.getSource() == lastNameEditButton){
             lastNameTextField.setEditable(true);
+            theyEdit = true;
         }
 
         if(e.getSource() == ageEditButton){
             ageTextField.setEditable(true);
+            theyEdit = true;
         }
 
         if(e.getSource() == courseEditButton){
             courseTextField.setEditable(true);
+            theyEdit = true;
         }
 
         if(e.getSource() == unitsEditButton){
             unitsTextField.setEditable(true);
+            theyEdit = true;
         }
 
         if(e.getSource() == instructorEditButton){
             instructorTextField.setEditable(true);
+            theyEdit = true;
         }
 
         if(e.getSource() == gwaEditButton){
             gwaTextField.setEditable(true);
+            theyEdit = true;
         }
 
+        if(e.getSource() == submitBtnSecondFrame){
+            submitUpdatedData(currentSearchId);
+        }
     }
 
 }

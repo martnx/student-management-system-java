@@ -122,14 +122,36 @@ public class Database {
         		
             }
         }      
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             System.out.println(e);
             System.out.println("Make this");
         }
         return students;
 	}
 
-    public void updateStudent(){
+    public void updateStudent(int person_id, String first_name, String last_name, String age, String course, String units, String instructor, String gwa)
+    {
+        System.out.println("Update Student method");
+        try
+        {
+//            String sql = "update studentdb set firstName = ?, set lastName = ?, set course = ?, set units = ?, set instructor = ?, set gwa = ? where person_id = ?";
+            String sql = "update studentdb set firstName = ?, lastName = ?, age = ?, course = ?, units = ?, instructor = ?, gwa = ? where  person_id= ?;";
+            p = conn.prepareStatement(sql);
+            p.setString(1, first_name);
+            p.setString(2, last_name);
+            p.setString(3, age);
+            p.setString(4, course);
+            p.setString(5, units);
+            p.setString(6, instructor);
+            p.setString(7, gwa);
+            p.setInt(8, person_id);
+            p.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+
     }
 
 
