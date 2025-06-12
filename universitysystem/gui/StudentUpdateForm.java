@@ -228,6 +228,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener
 
         submitBtnSecondFrame = new JButton("Submit");
         submitBtnSecondFrame.setPreferredSize(new Dimension(150, 30));
+        submitBtnSecondFrame.setEnabled(false);
 
         cancelBtnSecondFrame = new JButton("Cancel");
         cancelBtnSecondFrame.setPreferredSize(new Dimension(150, 30));
@@ -396,36 +397,43 @@ public class StudentUpdateForm extends JFrame implements ActionListener
         if(e.getSource() == firstNameEditButton){
             firstNameTextField.setEditable(true);
             theyEdit = true;
+            submitBtnSecondFrame.setEnabled(true);
         }
 
         if(e.getSource() == lastNameEditButton){
             lastNameTextField.setEditable(true);
             theyEdit = true;
+            submitBtnSecondFrame.setEnabled(true);
         }
 
         if(e.getSource() == ageEditButton){
             ageTextField.setEditable(true);
             theyEdit = true;
+            submitBtnSecondFrame.setEnabled(true);
         }
 
         if(e.getSource() == courseEditButton){
             courseTextField.setEditable(true);
             theyEdit = true;
+            submitBtnSecondFrame.setEnabled(true);
         }
 
         if(e.getSource() == unitsEditButton){
             unitsTextField.setEditable(true);
             theyEdit = true;
+            submitBtnSecondFrame.setEnabled(true);
         }
 
         if(e.getSource() == instructorEditButton){
             instructorTextField.setEditable(true);
             theyEdit = true;
+            submitBtnSecondFrame.setEnabled(true);
         }
 
         if(e.getSource() == gwaEditButton){
             gwaTextField.setEditable(true);
             theyEdit = true;
+            submitBtnSecondFrame.setEnabled(true);
         }
 
         if(e.getSource() == submitBtnSecondFrame){

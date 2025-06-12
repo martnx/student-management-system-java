@@ -135,7 +135,6 @@ public class Database {
         System.out.println("Update Student method");
         try
         {
-//            String sql = "update studentdb set firstName = ?, set lastName = ?, set course = ?, set units = ?, set instructor = ?, set gwa = ? where person_id = ?";
             String sql = "update studentdb set firstName = ?, lastName = ?, age = ?, course = ?, units = ?, instructor = ?, gwa = ? where  person_id= ?;";
             p = conn.prepareStatement(sql);
             p.setString(1, first_name);
