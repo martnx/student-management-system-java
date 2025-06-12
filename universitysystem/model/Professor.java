@@ -6,8 +6,8 @@ public class Professor extends Person{
 	String department;
 	ArrayList<String> subjectsHandled;
 	
-	Professor(int id, String firstName, String lastName,  String department){
-		super(id, firstName, lastName);
+	Professor(int id, String firstName, String lastName, int age,  String department){
+		super(id, firstName, lastName, age);
 		this.setDepartment(department);
 	}
 	

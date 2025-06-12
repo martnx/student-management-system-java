@@ -6,11 +6,11 @@ public abstract class Person {
 	protected int age;
 	protected int id;
 	
-	Person(int id, String firstName, String lastName){
+	Person(int id, String firstName, String lastName, int age){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		//Age isn't available for now
-//		this.age = age;
+		this.age = age;
 		this.id = id;
 	}
 	//Setter

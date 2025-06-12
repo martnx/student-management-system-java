@@ -1,8 +1,8 @@
 package model;
 public class HonorStudent extends Student implements Enrollable{
 	
-	public HonorStudent(int id, String firstName, String lastName, String course, int units, String instructor, double gwa) {
-		super(id, firstName, lastName, course, units, instructor, gwa);
+	public HonorStudent(int id, String firstName, String lastName, int age, String course, int units, String instructor, double gwa) {
+		super(id, firstName, lastName, age, course, units, instructor, gwa);
 		
 	}
 

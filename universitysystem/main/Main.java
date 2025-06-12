@@ -7,7 +7,8 @@ import gui.*;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static
+	void main(String[] args) {
 //		SwingUtilities.invokeLater(StudentForm::new); // Launch the GUI
 //		new StudentForm();
 //		new AddStudent();

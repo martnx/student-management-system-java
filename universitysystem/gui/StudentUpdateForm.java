@@ -295,7 +295,8 @@ public class StudentUpdateForm extends JFrame implements ActionListener
         fullInfoFrameSecondFrame.setVisible(true);
     }
 
-    boolean isNumber(String input){
+    boolean isNumber(String input)
+    {
         try
         {
             Integer.parseInt(input);
@@ -305,6 +306,7 @@ public class StudentUpdateForm extends JFrame implements ActionListener
             return false;
         }
     }
+
     public void displayDataInTextField(int person_id)
     {
         List<Student> students = dataBase.loadStudents();
@@ -355,7 +357,13 @@ public class StudentUpdateForm extends JFrame implements ActionListener
 
     void submitUpdatedData()
     {
-        System.out.println(firstNameTextField.getText());
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String age = ageTextField.getText();
+        String course = courseTextField.getText();
+        String units = unitsTextField.getText();
+        String instructor = instructorTextField.getText();
+        String gwa = gwaTextField.getText();
     }
 
     //ActionListener

@@ -20,7 +20,7 @@ public class Database {
 	public Database(){
         try {
             conn = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/universitydb",
+                "jdbc:mysql://127.0.0.1:3306/universityDB",
                 "root",
                 "022002" // change this to your MySQL password
             );
@@ -36,7 +36,7 @@ public class Database {
 			   "'" + gwa +  "'" +");";
 	   System.out.println(sql);
         try {
-			System.out.println("✅Connected to Database (MySQL univesityDB) = addStudent method");
+			System.out.println("✅Connected to Database (MySQL universityDataBase) = addStudent method");
     		s = conn.createStatement();
             s.executeUpdate(sql);
            
@@ -95,7 +95,7 @@ public class Database {
         try {
           	 
             // SQL command data stored in String datatype
-            String sql = "select * from students";
+            String sql = "select * from studentdb;";
             p = conn.prepareStatement(sql);
             rs = p.executeQuery();
 
@@ -103,19 +103,20 @@ public class Database {
             while (rs.next()) {
  
                 int person_id = rs.getInt("person_id");	
-                String first_name = rs.getString("first_name");
-                String last_name = rs.getString("last_name");
+                String first_name = rs.getString("firstName");
+                String last_name = rs.getString("lastName");
+                int age = rs.getInt("age");
                 String course = rs.getString("course");
                 int units = rs.getInt("units");
                 String instructor = rs.getString("instructor");
                 double gwa = rs.getDouble("gwa");
                 //Add the data in ArrayList
         		if((gwa >= 1.00 && gwa <= 1.25) || (gwa >= 1.26 && gwa <= 1.50) || (gwa >= 1.51 && gwa <= 1.75)) {
-        			honorStudent = new HonorStudent(person_id, first_name, last_name, course, units, instructor, gwa);
+        			honorStudent = new HonorStudent(person_id, first_name, last_name, age, course, units, instructor, gwa);
         			students.add(honorStudent);
         		}
         		else {
-        			student = new Student(person_id, first_name, last_name, course, units, instructor, gwa);
+        			student = new Student(person_id, first_name, last_name, age, course, units, instructor, gwa);
         			students.add(student);
         		}
         		
@@ -123,7 +124,13 @@ public class Database {
         }      
         catch (SQLException e) {
             System.out.println(e);
+            System.out.println("Make this");
         }
         return students;
 	}
+
+    public void updateStudent(){
+    }
+
+
 }
