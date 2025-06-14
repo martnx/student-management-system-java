@@ -15,6 +15,7 @@ public class Main {
 		
 //		new StudentDeleteForm();
 		new StudentListView1();
+//		new StudentListView();
 //		new ConsoleView();
 
 //		StudentUpdateForm suf = new StudentUpdateForm();
