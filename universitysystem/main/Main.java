@@ -14,11 +14,12 @@ public class Main {
 //		new AddStudent();
 		
 //		new StudentDeleteForm();
-//		new StudentListView();
+		new StudentListView1();
 //		new ConsoleView();
 
-		StudentUpdateForm suf = new StudentUpdateForm();
+//		StudentUpdateForm suf = new StudentUpdateForm();
 //		suf.fullInfoFrame();
+
 
 	}
 
