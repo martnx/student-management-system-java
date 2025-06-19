@@ -22,7 +22,7 @@ public class Database {
             conn = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.1:3306/universityDB",
                 "root",
-                "022002" // change this to your MySQL password
+                "123" // change this to your MySQL password
             );
             System.out.println("✅Connected to Database (MySQL universityDB)");
         } catch (SQLException e) {

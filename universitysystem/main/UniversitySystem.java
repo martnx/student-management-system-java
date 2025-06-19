@@ -27,29 +27,9 @@ public class UniversitySystem {
 		person = new ArrayList<>();
 		database = new Database();
 		students = database.loadStudents();
-		
-		//Professor
-//		addProfessor("Maria Santos", 45, giveId(), "Computer Science");
-//		addProfessor("Juan Dela Cruz", 50, giveId(), "Mathematics");
-//		addProfessor("Elena Robles", 39, giveId(), "Business Administration");
-//		addProfessor("Carlos Mendoza", 47, giveId(), "Psychology");
-//		addProfessor("Anna Villanueva", 42, giveId(), "Nursing");
-//		addProfessor("Roberto Ramos", 51, giveId(),  "History");
-//		addProfessor("Jennylyn Reyes", 35, giveId(), "Political Science");
-//		addProfessor("Michael Tan", 40, giveId(), "Mechanical Engineering");
-//		addProfessor("Sofia Lopez", 38, giveId(), "Architecture");
-//		addProfessor("Eduardo Garcia", 55, giveId(), "Economics");
-//		addProfessor("Katrina Diaz", 36, giveId(), "Education");
-//		addProfessor("Paulo Navarro", 48, giveId(), "Information Technology");
-//		addProfessor("Lourdes Jimenez", 43, giveId(), "Sociology");
-//		addProfessor("Victor Cruz", 52, giveId(), "Physics");
-//		addProfessor("Bea Lim", 37, giveId(), "Environmental Science");
-//		addProfessor("Nico Fernandez", 41, giveId(), "Fine Arts");
-//		addProfessor("Grace Bautista", 46, giveId(), "Civil Engineering");
-//		addProfessor("Oscar Herrera", 53, giveId(), "Biology");
-//		addProfessor("Isabel Aquino", 44, giveId(), "Philosophy");
-//		addProfessor("Julius Chavez", 49, giveId(), "Law");
-//		
+
+
+
 	}
 	
 	public void addStudent(String name, int age, int id, String courseName, int units, String instructor, double gwa) {

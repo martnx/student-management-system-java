@@ -5,7 +5,8 @@ public  class Student extends Person implements Enrollable{
 	private double gwa;
 	
 	//with Overloading methods
-	public Student(int id, String firstName, String lastName, int age, String course, int units, String instructor, double gwa){
+	public Student(int id, String firstName, String lastName, int age, String course, int units, String instructor, double gwa)
+	{
 		super(id, firstName, lastName, age);
 		this.course = new Course(course, units, instructor);
 		this.setGwa(gwa);
@@ -42,7 +43,8 @@ public  class Student extends Person implements Enrollable{
 		this.gwa = gwa;
 	}
 	
-	public void enrollCourse(Course c) {
+	public void enrollCourse(Course c)
+	{
 		
 	}
 
